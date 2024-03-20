@@ -57,6 +57,16 @@ function linkedListToArray(head) {
 }
 
 document.getElementById("submit").addEventListener("click", function() {
+  handleAddition();
+});
+
+document.getElementById("intervalsInput").addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    handleAddition();
+  }
+});
+
+function handleAddition() {
   const input = document.getElementById("intervalsInput").value;
   const matches = input.match(/l1\s*=\s*\[(.*?)\]\s*,\s*l2\s*=\s*\[(.*?)\]/); // Extract numbers from input
   if (matches) {
@@ -72,12 +82,10 @@ document.getElementById("submit").addEventListener("click", function() {
     document.getElementById("output").innerText =
       "Invalid input. Please enter input in the format: l1 = [2,4,3], l2 = [5,6,4]";
   }
+}
+
+// Add this script to clear the input field on page load
+document.addEventListener('DOMContentLoaded', function() {
+  var intervalsInput = document.getElementById('intervalsInput');
+  intervalsInput.value = ''; // Set the input value to an empty string
 });
-
-
-
-  // Add this script to clear the input field on page load
-  document.addEventListener('DOMContentLoaded', function() {
-    var intervalsInput = document.getElementById('intervalsInput');
-    intervalsInput.value = ''; // Set the input value to an empty string
-  });
